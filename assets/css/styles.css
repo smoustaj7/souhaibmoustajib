@@ -127,8 +127,9 @@ html {
   scroll-padding-top: calc(var(--nav-h) + 1rem);
 }
 
+/* Without JS, in-page links still glide; with JS, main.js drives them with a spring. */
 @media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
+  html:not(.js) { scroll-behavior: smooth; }
 }
 
 html.is-locked { overflow: hidden; }
