@@ -88,7 +88,9 @@
     // During a link jump the destination is already marked; don't flicker through sections passed on the way.
     if (jumping) return;
     if (footerVisible) return setActive('contact');
-    for (var i = 0; i < sections.length; i++) {
+    // The lowest section in the band wins: a link lands its section just below
+    // the bar, which leaves the previous section's last few pixels in the band too.
+    for (var i = sections.length - 1; i >= 0; i--) {
       if (inBand.has(sections[i])) return setActive(sections[i].dataset.spy);
     }
     setActive(null);
